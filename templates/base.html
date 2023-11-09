@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=604800" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Django Mart | One of the Biggest Online Shopping Platform</title>
+
+    <link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+    <!-- Bootstrap4 files-->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Font awesome 5 -->
+    <link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet" />
+
+    <!-- custom style -->
+    <link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+    <!-- custom javascript -->
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+    <script type="{% static 'text/javascript' %}">
+        /// some script
+
+        // jquery ready start
+        $(document).ready(function () {
+            // jQuery code
+        });
+        // jquery end
+    </script>
+</head>
+
+<body>
+    <header class="section-header"
+        style="background-color: #ddc270; color: #de5050; padding: 5px 0; box-shadow: 0 80px 60px rgba(53, 7, 162, 0.1);">
+        <nav class="navbar p-md-0 navbar-expand-sm navbar-dark border-bottom" style="background-color: #160d0b;">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <!-- container //  -->
+        </nav>
+
+        <section class="header-main border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <a href="{% url 'home' %}" class="brand-wrap"
+                            style="text-decoration: none; color: #fff; font-weight: bold;">
+                            <h3 style="margin: 0; font-size: 28px;">Django Mart</h3>
+                        </a>
+                        <!-- brand-wrap.// -->
+                    </div>
+                    <div class="col-lg col-sm col-md col-6 flex-grow-0">
+                        <div class="category-wrap dropdown d-inline-block float-right">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                style="background-color: #477b10; border-color: #007bff;">
+                                <i class="fa fa-bars"></i> All category
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" style="color: #333;">Consumer Electronics / Home
+                                    Appliances
+                                </a>
+                                <a class="dropdown-item" href="#" style="color: #333;">Auto / Transportation</a>
+                                <a class="dropdown-item" href="#" style="color: #333;">Apparel / Textiles / Timepieces
+                                </a>
+                                <a class="dropdown-item" href="#" style="color: #333;">Home & Garden / Construction /
+                                    Lights
+                                </a>
+                                <a class="dropdown-item" href="#" style="color: #333;">Beauty & Personal Care / Health
+                                </a>
+                            </div>
+                        </div>
+                        <!-- category-wrap.// -->
+                    </div>
+                    <!-- col.// -->
+                    <a href="{% url 'store' %}" class="btn btn-outline-primary"
+                        style="color: #007bff; border-color: #007bff;">Store</a>
+                    <div class="col-lg col-md-6 col-sm-12 col">
+                        <form action="#" class="search" style="position: relative;">
+                            <div class="input-group w-100">
+                                <input type="text" class="form-control"
+                                    style="width: 60%; border: 1px solid #ccc; border-radius: 20px; padding: 10px; font-size: 16px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); color: #333;"
+                                    placeholder="Search" />
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit"
+                                        style="background-color: #007bff; border-color: #007bff; border-radius: 30px; padding: 5px 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                                        <i class="fa fa-search" style="color: #fff; font-size: 18px;"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </form>
+                        <!-- search-wrap .end// -->
+                    </div>
+                    <!-- col.// -->
+                    <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+                        <div class="d-flex justify-content-end mb-3 mb-lg-0">
+                            <div class="widget-header">
+                                {% if request.user.is_authenticated %}
+                                <small class="title text">Welcome {{request.user.first_name}}</small>
+                                <div>
+                                    <a href="{% url 'profile' %}">Profile</a>
+                                    <span class="dark-transp"> | </span>
+                                    <a href="{% url 'logout' %}"> Logout </a>
+                                </div>
+
+                                {% else %}
+                                <small class="title text-muted">Welcome guest!</small>
+                                <div>
+                                    <a href="{% url 'login' %}">Sign in</a>
+                                    <span class="dark-transp"> | </span>
+                                    <a href="{% url 'register' %}"> Register</a>
+                                </div>
+                                {% endif %}
+
+                            </div>
+                            <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+                                <div class="icon icon-sm rounded-circle border">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <span class="badge badge-pill badge-danger notify">0</span>
+                            </a>
+                        </div>
+                        <!-- widgets-wrap.// -->
+                    </div>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- container.// -->
+        </section>
+        <!-- header-main .// -->
+    </header>
+
+
+
+
+    {% block body %}
+
+    {% endblock %}
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer py-3 py-md-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>About Us</h4>
+                    <p class="text-muted">Django Mart is a trusted online shopping platform offering a wide selection of
+                        high-quality products.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact Information</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> <a
+                                href="mailto:mdrahim5974@gmail.com">mdrahim5974@gmail.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+8801712705974">+8801712-705974</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/DQuk41296EcyK6uy5">
+                                BSMRSTU</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Store</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h4>Payment Methods</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fab fa-cc-visa"></i> Visa</li>
+                        <li><i class="fab fa-cc-paypal"></i> PayPal</li>
+                        <li><i class="fab fa-cc-mastercard"></i> MasterCard</li>
+                    </ul>
+                </div>
+            </div>
+            <div align="center">
+                <a target="_blank" href="https://www.sslcommerz.com/" title="SSLCommerz" alt="SSLCommerz"><img
+                        style="width:300px;height:auto;"
+                        src="https://securepay.sslcommerz.com/public/image/SSLCommerz-Pay-With-logo-All-Size-03.png" /></a>
+            </div>
+            <hr class="mt-3">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="text-muted">&copy; 2023 Django Mart. All rights reserved.</p>
+                </div>
+            </div>
+        </div><!-- //container -->
+    </footer>
+
+
+
+
+    <!-- ========================= FOOTER END // ========================= -->
+
+</body>
+
+</html>
